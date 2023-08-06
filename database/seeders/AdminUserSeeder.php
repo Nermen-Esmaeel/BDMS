@@ -23,7 +23,15 @@ class AdminUserSeeder extends Seeder
             'email_verified_at' => now(),
             'status' => 'admin',
            ]);
-
+           User::create([
+            'firsName' =>'Hala' ,
+             'lastName' => 'Ma',
+             'userName' => 'Hala Ma',
+            'email' => 'doner@gmail.com',
+            'password' => Hash::make('12345678') ,
+            'email_verified_at' => now(),
+            'status' => 'doner',
+           ]);
 
     }
 }
