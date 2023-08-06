@@ -135,7 +135,7 @@
 
                     <div class="text-center mt-4">
                         <a href="{{ route('doner.index') }}" class="btn btn-info">Back</a>
-                        <button type="submit" class="btn btn-warning">Create</button>
+                        <button type="submit" class="btn btn-warning">Update</button>
                     </div>
 
                 </form>

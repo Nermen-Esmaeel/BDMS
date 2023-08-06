@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\Backend\DonerController;
+use App\Http\Controllers\Backend\StockController;
 use App\Http\Controllers\Backend\DonationController;
 
 /*
@@ -27,11 +28,16 @@ Route::group(['prefix' => 'dashboard' , 'middleware' => ['auth' , 'IsAdmin']] , 
         return view('admin.dashboard');
     })->name('dashboard');
 
+    /******************* Doner Routes *****************/
     Route::resource('doner', DonerController::class);
+
+    /******************* Donation Routes *****************/
     Route::get('donation/approve/{id}' ,[DonationController::class  , 'approve'])->name('donation.approve');
     Route::get('donation/reject/{id}' ,[DonationController::class  , 'reject'])->name('donation.reject');
     Route::resource('donation', DonationController::class);
 
+    /******************* Stock Routes *****************/
+    Route::resource('stock', StockController::class);
 
 
 
