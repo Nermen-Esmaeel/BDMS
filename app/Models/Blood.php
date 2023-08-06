@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\HasOne;
-use Illuminate\Database\Eloquent\Relations\BelongsTo;
+
 
 class Blood extends Model
 {
@@ -23,15 +23,15 @@ class Blood extends Model
     }
 
 
-/**
- * Get the user that owns the Blood
- *
- * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
- */
-public function stock(): BelongsTo
-{
-    return $this->belongsTo(Stock::class);
-}
+        /**
+         * Get the user associated with the Blood
+         *
+         * @return \Illuminate\Database\Eloquent\Relations\HasOne
+         */
+        public function stock(): HasOne
+        {
+            return $this->hasOne(Stock::class);
+        }
 
 
 }

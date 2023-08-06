@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Backend;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Models\Stock;
 
 class StockController extends Controller
 {
@@ -12,7 +13,8 @@ class StockController extends Controller
      */
     public function index()
     {
-        //
+        $stocks = Stock::all();
+        return view('admin.stock.index' , compact('stocks'));
     }
 
     /**

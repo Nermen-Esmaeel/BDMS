@@ -16,17 +16,17 @@
              <div class="nav-item dropdown">
                  <a href="#" class="nav-link dropdown-toggle " data-bs-toggle="dropdown"><i class="fas fa-handshake"></i>Doners</a>
                  <div class="dropdown-menu bg-transparent border-0">
-                     <a href="{{route('doner.index')}}" class="dropdown-item"><i class="far fa-address-card" style="margin-left: 5%"></i>Doners List</a>
+                     <a href="{{route('doner.index')}}" class="dropdown-item"><i class="far fa-address-card me-2" style="margin-left: 5%"></i>Doners List</a>
                      <a href="{{route('donation.index')}}" class="dropdown-item"><i class="fa fa-list me-2" style="margin-left: 5%"></i>Donation List</a>
                  </div>
              </div>
 
              <div class="nav-item dropdown">
-                 <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown"><i class="fas fa-heartbeat me-2"></i>Blood Bank</a>
-                 {{-- <div class="dropdown-menu bg-transparent border-0">
-                     <a href="signin.html" class="dropdown-item"></a>
+                 <a href="{{route('stock.index')}}" class="nav-link dropdown-toggle" data-bs-toggle="dropdown"><i class="fas fa-heartbeat me-2"></i>Blood Bank</a>
+                 <div class="dropdown-menu bg-transparent border-0">
+                     <a href="{{route('stock.create')}}" class="dropdown-item"><i class="fas fa-ambulance me-2" style="margin-left: 5%"></i>Add Blood</a>
 
-                 </div> --}}
+                 </div>
              </div>
          </div>
      </nav>
