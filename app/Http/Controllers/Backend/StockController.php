@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Backend;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Stock;
+use App\Models\Blood;
+use App\Http\Requests\UpdateStock;
 
 class StockController extends Controller
 {
@@ -22,7 +24,7 @@ class StockController extends Controller
      */
     public function create()
     {
-        //
+            //
     }
 
     /**
@@ -46,15 +48,29 @@ class StockController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $blood_group = Stock::find($id);
+        $bloods = Blood::all();
+        return view('admin.stock.edit' , compact('blood_group' , 'bloods'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(UpdateStock $request, string $id)
     {
-        //
+       $stock = Stock::find($id);
+       $validated = $request->validated();
+       if($validated){
+        $stock->update([
+
+            'blood_id' => $request->get('blood') ,
+            'unit' => $request->get('unit'),
+
+        ]);
+
+
+       }
+       return redirect()->route('stock.index')->with('edit' , 'Unit in stock updated Successfuly');
     }
 
     /**

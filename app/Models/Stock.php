@@ -10,6 +10,13 @@ class Stock extends Model
 {
     use HasFactory;
 
+
+    protected $fillable = [
+
+
+        'unit',
+        'blood_id',
+    ];
     /**
      * Get the user that owns the Stock
     *
