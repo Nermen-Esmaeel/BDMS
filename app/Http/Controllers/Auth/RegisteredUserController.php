@@ -60,7 +60,7 @@ class RegisteredUserController extends Controller
             'address' => $request->address ,
             'city_id' => $request->city,
             'blood_id' =>  $request->blood,
-
+            'status' => 'doner',
 
         ]);
 

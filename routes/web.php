@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\FrontController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\Backend\DonerController;
 use App\Http\Controllers\Backend\StockController;
@@ -22,7 +23,7 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-
+Route::get('/home' ,[FrontController::class  , 'index'])->name('home');
 
 Route::group(['prefix' => 'dashboard' , 'middleware' => ['auth' , 'IsAdmin']] , function(){
     Route::get('/', [DashboardController::class  , 'index'])->name('dashboard');
