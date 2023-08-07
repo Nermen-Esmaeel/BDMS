@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Redirect;
 use App\Models\Donation;
 use App\Models\User;
 use App\Models\Blood;
+use App\Models\Stock;
 use App\Http\Requests\StoreDonationRequest;
 use App\Http\Requests\UpdateDonationRequest;
 
@@ -113,9 +114,17 @@ class DonationController extends Controller
 
     public function approve($id){
         $donation = Donation::find($id);
+        $blood_id =$donation->user->blood_id;
+        $stocks =Stock::all();
+        foreach($stocks as $stock){
+            if($blood_id ==  $stock->blood_id){
+             $stock->unit = $stock->unit + $donation->Unit;
+             $stock->save();
+            }
+        }
         $donation->status = 'Approve';
         $donation->save();
-        return redirect()->route('donation.index')->with('success' , 'Status changed To Approve Successfuly');
+        return redirect()->route('donation.index')->with('success' , 'Status changed To Approve and Apply to Stock Successfuly ');
     }
 
     public function reject($id){

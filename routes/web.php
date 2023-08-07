@@ -5,6 +5,7 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\Backend\DonerController;
 use App\Http\Controllers\Backend\StockController;
 use App\Http\Controllers\Backend\DonationController;
+use App\Http\Controllers\Backend\DashboardController;
 
 /*
 |--------------------------------------------------------------------------
@@ -24,9 +25,7 @@ Route::get('/', function () {
 
 
 Route::group(['prefix' => 'dashboard' , 'middleware' => ['auth' , 'IsAdmin']] , function(){
-    Route::get('/', function(){
-        return view('admin.dashboard');
-    })->name('dashboard');
+    Route::get('/', [DashboardController::class  , 'index'])->name('dashboard');
 
     /******************* Doner Routes *****************/
     Route::resource('doner', DonerController::class);
