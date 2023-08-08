@@ -6,34 +6,46 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarText">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                <li class="nav-item">
-                    <a href="{{ route('home') }}" class="nav-item nav-link">Home</a>
-                </li>
 
             </ul>
+
             <ul class="navbar-nav mb-2 mb-lg-0">
                 @auth
-                <a class="nav-item nav-link" href="{{route('dashboard')}}" role="button" aria-expanded="false">
-                    Dashboard
-                </a>
 
+                <li class="nav-item  mt-2">
+                    <a href="{{ route('doner.MyRequest') }}" class="navbar-brand">My Donation</a>
+                </li>
 
-                <form method="POST" action="{{ route('logout') }}">
-                    @csrf
+                <div class="nav-item dropdown">
+                    <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">
 
-                    <a class="nav-item nav-link" href="route('logout')" onclick="event.preventDefault();
-                                        this.closest('form').submit();">
-                        {{ __('Log Out') }}
+                        <h5 class="d-none d-lg-inline-flex" style="color: rgb(84, 84, 235)">{{ Auth::user()->userName }}</h5>
                     </a>
-                </form>
+                    <div class="dropdown-menu dropdown-menu-end bg-dark border-0 rounded-0 rounded-bottom m-0">
+                        <a href="{{route('profile.edit')}}" class="dropdown-item" style="color: rgb(84, 84, 235)">My Profile</a>
+                        <form method="POST" action="{{ route('logout') }}">
+                            @csrf
+
+                            <x-dropdown-link :href="route('logout')" onclick="event.preventDefault();
+                                                this.closest('form').submit();">
+                                {{ __('Log Out') }}
+                            </x-dropdown-link>
+                        </form>
+                    </div>
+
+                </div>
 
                 @else
+                <a href="{{ route('doner.AllRequest') }}" class="navbar-brand"> Donation</a>
+
                 <a class="nav-item nav-link" href="{{ route('login') }}" role="button" aria-expanded="false">
                     Login
                 </a>
                 <a class="nav-item nav-link" href="{{route('register')}}" aria-expanded="false">
                     Donor Sign Up!
                 </a>
+
+
 
 
                 @endauth

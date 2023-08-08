@@ -2,7 +2,7 @@
 @section('content')
 <style>
     .how-section1 {
-        margin-top: -15%;
+        margin-top: -6%;
         padding: 10%;
     }
 

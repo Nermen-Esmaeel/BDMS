@@ -24,7 +24,7 @@ class StoreDonationRequest extends FormRequest
     {
         return [
             'doner' =>['required'],
-            'unit' => ['required'],
+            'unit' => 'required|integer|max:5',
             'date' => ['required'],
             'feedback'   =>  'required|string|between:30,600',
             'diseases' => ['nullable'],

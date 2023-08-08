@@ -19,12 +19,15 @@ use App\Http\Controllers\Backend\DashboardController;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
 
-Route::get('/home' ,[FrontController::class  , 'index'])->name('home');
 
+Route::get('/' ,[FrontController::class  , 'index'])->name('home');
+Route::get('/doner/request' ,[FrontController::class  , 'donerRequest'])->name('doner.request');
+Route::post('/doner/request' ,[FrontController::class  , 'storeRequest'])->name('request.store');
+Route::get('/doner/MyRequest' ,[FrontController::class  , 'showRequest'])->name('doner.MyRequest');
+Route::get('/doner/AllRequest' ,[FrontController::class  , 'showAllRequest'])->name('doner.AllRequest');
+
+/******************* DashBoard Routes **********************************/
 Route::group(['prefix' => 'dashboard' , 'middleware' => ['auth' , 'IsAdmin']] , function(){
     Route::get('/', [DashboardController::class  , 'index'])->name('dashboard');
 
