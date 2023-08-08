@@ -2,14 +2,38 @@
 
 @section('content')
 
-<!-- Main content -->
+
 
 <div class="row">
     <div class="col-12">
+        <!-- Main content -->
+        <form action="{{route('request.filter')}}" method="GET">
+            @csrf
+            <div class="col-md-6">
+                <div class="form-group mt-4" style="margin-left:30%">
+                    <label for="example-text-input" class="form-control-label">Start Date</label>
+                    <input class="form-control mt-2" type="date" name="start_date" value="{{ old('date') }}" placeholder="dd/mm/YYYY">
+                </div>
+
+            </div>
+
+            <div class="col-md-6">
+                <div class="form-group mt-4" style="margin-left:30%">
+                    <label for="example-text-input" class="form-control-label">End Date</label>
+                    <input class="form-control mt-2" type="date" name="end_date" value="{{ old('date') }}" placeholder="dd/mm/YYYY">
+
+                </div>
+            </div>
+            <div class="col-md-5">
+                <div class="text-center mt-4">
+
+                    <button type="submit" class="btn btn-success">Search</button>
+                </div>
+            </div>
+        </form>
+
+
         <div class="card mt-4" style="margin-left:5% ;margin-right:5%">
-
-
-
             <div class="card">
                 <div class="card-header " style="background-color:rgb(236, 172, 9)">
                     <h3 class=" card-title" align="center">All Donation</h3>

@@ -13,10 +13,14 @@ class CitySeeder extends Seeder
      */
     public function run(): void
     {
-        City::create([
-            'name' =>'Lattakia' ,
+        $city_name =['lattkia' , 'Dasmascus' , 'Tartous'];
 
-           ]);
+        for($i=0; $i<3;$i++) {
+            $city=new City();
+            $city->name=$city_name[$i];
+
+            $city->save();
+        }
     }
 
 

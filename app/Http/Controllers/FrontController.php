@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use App\Http\Requests\StoreDonationRequest;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Donation;
+use App\Models\City;
+use App\Models\Blood;
 
 class FrontController extends Controller
 {
@@ -50,7 +52,25 @@ class FrontController extends Controller
     //show All Requests
     public function showAllRequest()
         {
+
+            $cities= City::all();
+            $bloods = Blood::all();
             $donations = Donation::where('status' , 'Approve')->get();
+            return view('frontend.allDonation', compact('donations' ,'cities' , 'bloods'));
+        }
+
+
+
+        public function filter(Request $request)
+        {
+            $start_date = $request->start_date;
+            $end_date = $request->end_date;
+            $donations = Donation::whereDate('created_at' ,'>=' , $start_date)
+                                         ->whereDate('created_at' ,'<=' , $end_date)
+                                          ->get();
+
             return view('frontend.allDonation', compact('donations'));
         }
+
+
 }

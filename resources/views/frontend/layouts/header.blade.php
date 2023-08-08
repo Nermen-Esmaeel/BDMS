@@ -6,7 +6,9 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarText">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-
+                <a class="nav-item nav-link" href="{{route('home')}}" aria-expanded="false">
+                    Home
+                </a>
             </ul>
 
             <ul class="navbar-nav mb-2 mb-lg-0">

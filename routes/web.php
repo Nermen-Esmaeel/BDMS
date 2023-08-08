@@ -26,6 +26,7 @@ Route::get('/doner/request' ,[FrontController::class  , 'donerRequest'])->name('
 Route::post('/doner/request' ,[FrontController::class  , 'storeRequest'])->name('request.store');
 Route::get('/doner/MyRequest' ,[FrontController::class  , 'showRequest'])->name('doner.MyRequest');
 Route::get('/doner/AllRequest' ,[FrontController::class  , 'showAllRequest'])->name('doner.AllRequest');
+Route::get('/filter' ,[FrontController::class  , 'filter'])->name('request.filter');
 
 /******************* DashBoard Routes **********************************/
 Route::group(['prefix' => 'dashboard' , 'middleware' => ['auth' , 'IsAdmin']] , function(){
